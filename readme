@@ -1,0 +1,41 @@
+installare signalk-server
+https://github.com/SignalK/signalk-server/blob/master/raspberry_pi_installation.md
+
+installare setuptools
+sudo apt install python3-setuptools
+
+installare pip3
+sudo apt install python3-pip
+
+installare pip install Flask-SocketIO
+
+
+installare pypilot
+https://github.com/pypilot/pypilot
+https://github.com/pypilot/pypilot/tree/master/scripts/debian
+
+sudo systemctl enable pypilot
+sudo systemctl start pypilot
+
+sudo systemctl enable pypilot_web
+sudo systemctl start pypilot_web
+
+pulire /etc/network/interfaces
+
+in config.txt
+
+# shutdown
+# https://greiginsydney.com/pi-shutdown-button/
+dtoverlay=gpio-shutdown,gpio_pin=17,active_low=1,gpio_pull=up,debounce=1000
+
+# bmp180
+# https://medium.com/cemac/creating-multiple-i2c-ports-on-a-raspberry-pi-e31ce72a3eb2
+dtoverlay=i2c-gpio,bus=2,i2c_gpio_sda=22,i2c_gpio_scl=23
+
+in signalk
+plugin per BMP180
+
+
+signalk in IP:3000
+pypilot in IP:8000
+
